@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AÇAÍ PREMIUM — Monte seu açaí</title>
+<meta name="theme-color" content="#0b0313">
+<style>
+:root{
+  --bg:#0b0313; --card:#1f0e38; --card2:#2a1550; --borda:#3b2166; --roxo:#8b4dff; --lilas:#c9a8f0;
+  --texto:#f4edff; --muted:#a898c6; --verde:#3ddc84; --amarelo:#ffc83d; --erro:#ff6b7a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--texto);background:var(--bg);
+  min-height:100vh;line-height:1.45;padding-bottom:104px;overflow-x:hidden}
+/* névoa roxa de fundo */
+body::before,body::after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(90px);opacity:.55;animation:nevoa 18s ease-in-out infinite alternate}
+body::before{width:520px;height:520px;background:#4b1d8f;top:-160px;left:-120px}
+body::after{width:440px;height:440px;background:#2a0b4d;bottom:-140px;right:-100px;animation-delay:-9s}
+@keyframes nevoa{to{transform:translate(60px,40px) scale(1.15)}}
+button{font:inherit;color:inherit;cursor:pointer;border:none;background:none}
+:focus-visible{outline:3px solid var(--amarelo);outline-offset:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+
+/* Cabeçalho */
+.hero{padding:22px 0 6px}
+.hero-in{display:grid;gap:8px;align-items:center}
+@media(min-width:820px){.hero-in{grid-template-columns:1.1fr .9fr}}
+.brand{display:flex;gap:12px;align-items:center;font-weight:800;letter-spacing:.1em;font-size:1.25rem}
+.brand svg{width:46px;height:46px}
+.brand small{display:block;font-size:.65rem;letter-spacing:.25em;color:var(--lilas);font-weight:600}
+.hero h1{font-size:clamp(2rem,6vw,3.2rem);line-height:1.08;margin:22px 0 10px;background:linear-gradient(90deg,#fff,#d9bdff 60%,var(--amarelo));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:470px}
+.stage{display:grid;place-items:center;min-height:360px;position:relative}
+.stage::before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,#7a3fc277,transparent 65%);animation:aura 5s ease-in-out infinite alternate}
+@keyframes aura{to{transform:scale(1.2);opacity:.7}}
+.video{width:min(290px,80%);aspect-ratio:3/4;object-fit:cover;border-radius:24px;position:relative;box-shadow:0 20px 60px #000a}
+
+/* Copo 3D girando */
+.scene{width:260px;height:350px;perspective:1000px;position:relative}
+.chao{position:absolute;left:50%;bottom:6px;width:170px;height:24px;margin-left:-85px;border-radius:50%;background:radial-gradient(ellipse,rgba(0,0,0,.7),transparent 70%);filter:blur(3px)}
+.tilt{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(-16deg)}
+#cup3d{position:absolute;left:130px;top:176px;width:0;height:0;transform-style:preserve-3d}
+.tira{position:absolute;left:-7.4px;top:-111px;width:14.8px;height:222px;backface-visibility:hidden;background:#2a0b4d;
+  clip-path:polygon(0 0,100% 0,calc(100% - 2.2px) 100%,2.2px 100%)}
+.tira i{position:absolute;inset:0}
+.tira .sh{background:#05000d;opacity:0}
+.tira .sp{background:#fff;opacity:0}
+.topo{position:absolute;left:-80px;top:-191px;width:160px;height:160px;border-radius:50%;box-sizing:border-box;
+  border:5px solid #efe3ff;background:radial-gradient(circle at 40% 35%,#6b2fb5,#2a0b4d 72%);transform:rotateX(90deg);transform-style:preserve-3d}
+.topo .cr{position:absolute;border-radius:50%;background:radial-gradient(circle at 38% 32%,#9456e0,#3a1272 78%)}
+.topo .cr.a{inset:12px;transform:translateZ(7px)}
+.topo .cr.b{inset:30px;transform:translateZ(13px)}
+.topo .cr.c{inset:48px;transform:translateZ(18px)}
+.topo .t{position:absolute;border-radius:50%;transform:translateZ(24px);box-shadow:0 2px 4px #0006}
+.t.ban{width:30px;height:30px;background:radial-gradient(circle,#fff0a8 30%,#ffd84d 31%,#f1b92d)}
+.t.mor{width:28px;height:28px;background:radial-gradient(circle at 35% 30%,#ff8aa0,#e02a4f)}
+.t.kiw{width:28px;height:28px;background:radial-gradient(circle,#e3f9a6 28%,#8bd43c 30%,#5aa21e)}
+.t.gra{width:12px;height:9px;border-radius:4px;background:#c98a3c}
+
+/* Títulos */
+main{margin-top:14px}
+.layout{display:grid;gap:26px}
+@media(min-width:960px){.layout{grid-template-columns:1fr 370px;align-items:start}}
+h2.tit{font-size:1.3rem;display:flex;align-items:center;gap:10px;margin-bottom:6px}
+h2.tit .n{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--roxo),#5b21b6);font-size:.9rem}
+p.dica{color:var(--muted);font-size:.93rem;margin-bottom:16px;min-height:1.4em}
+section.bloco{margin-bottom:32px}
+
+/* Tamanhos */
+.tamanhos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tam{position:relative;display:block;width:100%;background:linear-gradient(180deg,var(--card2),var(--card));border:2px solid var(--borda);
+  border-radius:22px;padding:24px 10px 14px;text-align:center;transition:transform .25s,border-color .25s,box-shadow .25s}
+.tam:hover{transform:translateY(-4px);border-color:var(--roxo)}
+.tam:active{transform:scale(.98)}
+.tam.sel{border-color:var(--verde);box-shadow:0 0 0 3px #3ddc8444,0 14px 40px #8b4dff44;animation:pop .35s}
+.copo{width:var(--w);height:auto;display:block;margin:0 auto 6px;animation:flutua 3.6s ease-in-out infinite;overflow:visible}
+.tam .vol{display:block;font-weight:800;font-size:1.15rem}
+.tam .preco{display:block;font-weight:800;font-size:1.35rem;color:var(--amarelo)}
+.tam .max{display:inline-block;margin-top:6px;font-size:.78rem;background:#ffffff14;border-radius:999px;padding:3px 10px;color:var(--lilas)}
+.tam .est{display:block;font-size:.8rem;color:var(--muted);margin-top:6px}
+.tam.sel .est{color:var(--verde);font-weight:700}
+.selo{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--amarelo);color:#2a0b4d;font-size:.72rem;font-weight:800;padding:3px 12px;border-radius:999px;white-space:nowrap}
+.onda{animation:onda 2.4s linear infinite}
+.bob{animation:bob 2.4s ease-in-out infinite;animation-delay:var(--d,0s)}
+@keyframes onda{to{transform:translateX(60px)}}
+@keyframes bob{50%{transform:translateY(-2.5px)}}
+@keyframes flutua{50%{transform:translateY(-6px)}}
+@keyframes pop{0%{transform:scale(.96)}60%{transform:scale(1.03)}100%{transform:scale(1)}}
+
+/* Adicionais */
+.grupo{margin-bottom:26px}
+.grupo h3{font-size:1.02rem;margin-bottom:12px;color:var(--lilas)}
+.lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:14px}
+.add{position:relative;display:block;width:100%;background:linear-gradient(180deg,var(--card2),var(--card));border:2px solid var(--borda);
+  border-radius:20px;padding:16px 10px 12px;text-align:center;transition:transform .2s,border-color .2s,box-shadow .2s,opacity .2s}
+.add:hover{transform:translateY(-4px);border-color:var(--c)}
+.add.sel{border-color:var(--c);box-shadow:0 0 22px -2px var(--c);animation:pop .35s}
+.add.bloq{opacity:.38;filter:grayscale(.55);cursor:not-allowed}
+.add.bloq:hover{transform:none;border-color:var(--borda)}
+.foto{width:88px;height:88px;margin:0 auto 8px;animation:flutua 4s ease-in-out infinite;animation-delay:var(--d)}
+.foto-in{position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden;border:3px solid var(--c);
+  background:radial-gradient(circle at 35% 30%,#fff9,var(--c) 72%);transition:transform .3s;display:grid;place-items:center}
+.add:hover .foto-in{transform:scale(1.1) rotate(-5deg)}
+.foto-in img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:zoom 7s ease-in-out infinite alternate}
+@keyframes zoom{to{transform:scale(1.14)}}
+.foto-in .emo{display:none;font-size:2.4rem;filter:drop-shadow(0 3px 3px #0004)}
+.foto-in.sem .emo{display:block}
+.foto-in.sem img{display:none}
+.add .nm{display:block;font-weight:700;font-size:.95rem}
+.add .pr{display:block;font-weight:800;color:var(--amarelo);font-size:.95rem}
+.add .st{display:block;font-size:.76rem;color:var(--muted);margin-top:3px}
+.add.sel .st{color:var(--verde);font-weight:700}
+.ck{position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;background:var(--verde);color:#062b14;display:none;place-items:center;font-size:.8rem;font-weight:800}
+.add.sel .ck{display:grid}
+
+/* Resumo */
+aside.resumo{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--borda);border-top:6px solid var(--roxo);border-radius:24px;padding:22px;box-shadow:0 18px 50px #0008}
+@media(min-width:960px){aside.resumo{position:sticky;top:16px}}
+aside.resumo h2{font-size:1.4rem;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.pill{font-size:.76rem;background:#ffffff14;color:var(--lilas);padding:3px 10px;border-radius:999px;font-weight:700;white-space:nowrap}
+.pontos{display:flex;gap:6px;margin-top:10px}
+.pontos span{flex:1;height:6px;border-radius:3px;background:#ffffff1a;transition:background .3s}
+.pontos span.on{background:var(--verde)}
+.linha{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed var(--borda);font-size:.96rem}
+.linha.sub{color:var(--muted)}
+.sec{margin-top:14px;font-weight:800;font-size:.8rem;color:var(--lilas);text-transform:uppercase;letter-spacing:.08em}
+.vazio{margin-top:8px;padding:14px;border-radius:14px;background:#ffffff0d;color:var(--muted);text-align:center;font-size:.92rem}
+.total{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding:14px 16px;background:linear-gradient(135deg,#5b21b6,var(--roxo));border-radius:16px}
+.total span{font-weight:700;letter-spacing:.04em;font-size:.9rem}
+.total strong{font-size:1.7rem;transition:transform .2s}
+.total strong.bump{transform:scale(1.12)}
+.btn{display:block;width:100%;padding:16px;border-radius:16px;font-weight:800;font-size:1.05rem;letter-spacing:.04em;text-align:center;text-decoration:none;transition:transform .15s,filter .2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.btn:active{transform:scale(.97)}
+.btn-ok{background:linear-gradient(135deg,var(--verde),#1f9d58);color:#062b14;margin-top:14px;box-shadow:0 8px 22px #3ddc8444}
+.btn-sec{background:#ffffff14;color:var(--lilas);margin-top:10px;padding:12px;font-size:.92rem}
+.btn-wa{background:#25d366;color:#073b1d;box-shadow:0 8px 22px #25d36655}
+.erro{display:none;margin-top:10px;padding:10px 14px;border-radius:12px;background:#ff6b7a22;color:var(--erro);font-weight:600;font-size:.92rem}
+.erro.on{display:block}
+
+/* Barra fixa (celular) */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:30;background:#160726f2;backdrop-filter:blur(10px);border-top:1px solid var(--borda);
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px;border-radius:20px 20px 0 0}
+.barra .info{flex:1;min-width:0}
+.barra small{display:block;color:var(--muted);font-size:.76rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.barra strong{font-size:1.35rem;color:var(--amarelo)}
+.barra .btn{width:auto;margin:0;padding:14px 22px;font-size:.95rem}
+@media(min-width:960px){.barra{display:none}body{padding-bottom:40px}}
+
+/* Avisos */
+#avisos{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;width:calc(100% - 28px);max-width:440px}
+.aviso{background:#2a1550;border:1px solid var(--roxo);color:#fff;padding:10px 18px;border-radius:999px;font-size:.9rem;font-weight:600;box-shadow:0 10px 30px #000a;animation:ent .25s,sai .3s 2.2s forwards;text-align:center}
+.aviso.ok{background:#14532d;border-color:var(--verde)}
+.aviso.erro2{background:#5b1420;border-color:var(--erro)}
+@keyframes ent{from{opacity:0;transform:translateY(-12px)}}
+@keyframes sai{to{opacity:0;transform:translateY(-12px)}}
+
+/* Janela de confirmação */
+.fundo{position:fixed;inset:0;z-index:50;background:rgba(5,0,13,.75);display:grid;place-items:end center}
+@media(min-width:620px){.fundo{place-items:center;padding:20px}}
+.janela{background:var(--card);border:1px solid var(--borda);width:100%;max-width:520px;max-height:92vh;overflow:auto;border-radius:26px 26px 0 0;padding:24px;animation:sobe .3s}
+@media(min-width:620px){.janela{border-radius:26px}}
+@keyframes sobe{from{transform:translateY(40px);opacity:0}}
+.janela h2{font-size:1.4rem;margin-bottom:4px}
+.janela .lead{color:var(--muted);font-size:.93rem;margin-bottom:12px}
+.aviso-conf{margin-top:12px;padding:10px 14px;border-radius:12px;background:#ffc83d22;color:#ffe08a;font-size:.88rem}
+.okmark{width:64px;height:64px;border-radius:50%;background:var(--verde);color:#062b14;display:grid;place-items:center;font-size:2rem;margin:0 auto 10px}
+.rodape{text-align:center;color:var(--muted);font-size:.8rem;padding:6px 0 26px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="avisos" aria-live="polite"></div>
+
+<header class="hero"><div class="wrap hero-in">
+  <div>
+    <div class="brand">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="#2a1550" stroke="#8b4dff" stroke-width="2"/>
+        <path d="M16 31h32l-4 18a6 6 0 0 1-6 5H26a6 6 0 0 1-6-5z" fill="#8b4dff"/>
+        <path d="M16 31c0-8 7-14 16-14s16 6 16 14z" fill="#c9a8f0"/>
+        <path d="M38 8c4 0 7 3 7 7-4 0-7-3-7-7z" fill="#3ddc84"/><circle cx="32" cy="42" r="4" fill="#ffc83d"/>
+      </svg>
+      <div id="nomeLoja">AÇAÍ PREMIUM<small>AÇAITERIA</small></div>
+    </div>
+    <h1>Monte seu açaí do seu jeito!</h1>
+    <p>Escolha seu tamanho, adicione seus ingredientes favoritos e aproveite.</p>
+  </div>
+  <div class="stage" id="stage">
+    <video id="video" class="video" muted loop playsinline preload="metadata" hidden></video>
+    <div class="scene" id="scene" aria-label="Copo de açaí girando">
+      <div class="chao"></div>
+      <div class="tilt"><div id="cup3d">
+        <div class="topo">
+          <div class="cr a"></div><div class="cr b"></div><div class="cr c"></div>
+          <i class="t ban" style="left:22px;top:30px"></i><i class="t ban" style="left:80px;top:24px"></i>
+          <i class="t mor" style="left:56px;top:60px"></i><i class="t kiw" style="left:100px;top:76px"></i>
+          <i class="t kiw" style="left:30px;top:84px"></i><i class="t mor" style="left:70px;top:100px"></i>
+          <i class="t gra" style="left:50px;top:40px"></i><i class="t gra" style="left:92px;top:56px"></i>
+          <i class="t gra" style="left:60px;top:84px"></i><i class="t gra" style="left:40px;top:62px"></i>
+        </div>
+      </div></div>
+    </div>
+  </div>
+</div></header>
+
+<main class="wrap layout">
+  <div>
+    <section class="bloco" aria-labelledby="t1">
+      <h2 class="tit" id="t1"><span class="n">1</span> Escolha o tamanho do seu açaí</h2>
+      <p class="dica">Selecione apenas um tamanho.</p>
+      <div class="tamanhos" id="tamanhos"></div>
+    </section>
+    <section class="bloco" aria-labelledby="t2">
+      <h2 class="tit" id="t2"><span class="n">2</span> Escolha seus adicionais</h2>
+      <p class="dica" id="dica"></p>
+      <div id="adicionais"></div>
+    </section>
+  </div>
+
+  <aside class="resumo" aria-labelledby="t3">
+    <h2 id="t3">Seu açaí <span class="pill" id="contador">0 adicionais</span></h2>
+    <div class="pontos" id="pontos"></div>
+    <div id="corpo"></div>
+    <p class="erro" id="erro" role="alert"></p>
+    <button class="btn btn-ok" id="btnFinalizar" type="button">FINALIZAR PEDIDO</button>
+    <button class="btn btn-sec" id="btnLimpar" type="button">🗑️ Limpar pedido</button>
+  </aside>
+</main>
+<p class="rodape">Seu pedido fica salvo neste aparelho, mesmo se você atualizar a página.</p>
+
+<div class="barra">
+  <div class="info"><small id="barraInfo">Escolha um tamanho</small><strong id="barraTotal">R$ 0,00</strong></div>
+  <button class="btn btn-ok" id="barraBtn" type="button">FINALIZAR</button>
+</div>
+
+<div class="fundo" id="fundo" hidden><div class="janela" role="dialog" aria-modal="true" aria-labelledby="mTit" id="janela"></div></div>
+
+<script>
+"use strict";
+/* ==========================================================
+   CONFIGURAÇÃO — edite aqui. Preços em CENTAVOS (1200 = R$ 12,00)
+   FOTOS: coloque as fotos reais na pasta "fotos/" com o nome do
+   "id" de cada ingrediente (ex.: fotos/banana.jpg). Aceita jpg, jpeg, png ou webp.
+   VÍDEO: se existir "video/copo-acai.mp4", ele substitui o copo 3D do topo.
+   ========================================================== */
+const CONFIG = {
+  nomeLoja: "AÇAÍ PREMIUM",
+  // CONFIGURAÇÃO PENDENTE: troque pelo número real da loja (DDI + DDD + número, só dígitos). Ex.: "5511999998888"
+  whatsapp: "5500000000000",
+  whatsappExemplo: "5500000000000",
+  taxaEntregaCentavos: 0,
+  pastaFotos: "fotos/",
+  videoCopo: "video/copo-acai.mp4",
+  popular: "500",
+  tamanhos: [
+    { id: "300", ml: 300, rotulo: "Copo de 300 ml", precoCentavos: 1200, maxAdicionais: 2, largura: 96 },
+    { id: "500", ml: 500, rotulo: "Copo de 500 ml", precoCentavos: 1600, maxAdicionais: 4, largura: 122 }
+  ],
+  categorias: [
+    { nome: "🍓 Frutas", itens: [
+      { id: "banana",  nome: "Banana",  emoji: "🍌", cor: "#ffd84d", precoCentavos: 200 },
+      { id: "morango", nome: "Morango", emoji: "🍓", cor: "#ff4d6d", precoCentavos: 300 },
+      { id: "kiwi",    nome: "Kiwi",    emoji: "🥝", cor: "#8bd43c", precoCentavos: 350 },
+      { id: "manga",   nome: "Manga",   emoji: "🥭", cor: "#ffa62b", precoCentavos: 250 }
+    ]},
+    { nome: "🥛 Cremes e acompanhamentos", itens: [
+      { id: "leite-po",   nome: "Leite em pó",       emoji: "🥛", cor: "#f1e6cf", precoCentavos: 200 },
+      { id: "condensado", nome: "Leite condensado",  emoji: "🍼", cor: "#ffe3a3", precoCentavos: 200 },
+      { id: "ninho",      nome: "Creme de ninho",    emoji: "🍦", cor: "#fff0cc", precoCentavos: 350 },
+      { id: "avela",      nome: "Creme de avelã",    emoji: "🌰", cor: "#9a6140", precoCentavos: 400 },
+      { id: "amendoim-p", nome: "Pasta de amendoim", emoji: "🥜", cor: "#d09550", precoCentavos: 300 }
+    ]},
+    { nome: "🥣 Crocantes", itens: [
+      { id: "granola",    nome: "Granola tradicional",   emoji: "🥣", cor: "#e0a95c", precoCentavos: 200 },
+      { id: "granola-ch", nome: "Granola com chocolate", emoji: "🍫", cor: "#8a4e33", precoCentavos: 250 },
+      { id: "pacoca",     nome: "Paçoca",                emoji: "🍘", cor: "#d9a870", precoCentavos: 150 },
+      { id: "amendoim-t", nome: "Amendoim triturado",    emoji: "🥜", cor: "#c9904f", precoCentavos: 150 },
+      { id: "confete",    nome: "Confete de chocolate",  emoji: "🍬", cor: "#ff5db1", precoCentavos: 200 },
+      { id: "farinha",    nome: "Farinha láctea",        emoji: "🥄", cor: "#fff0c9", precoCentavos: 200 }
+    ]},
+    { nome: "🍯 Coberturas", itens: [
+      { id: "calda-ch", nome: "Calda de chocolate", emoji: "🍫", cor: "#6a3320", precoCentavos: 150 },
+      { id: "calda-mo", nome: "Calda de morango",   emoji: "🍓", cor: "#ff3b6b", precoCentavos: 150 },
+      { id: "mel",      nome: "Mel",                emoji: "🍯", cor: "#f5a623", precoCentavos: 200 }
+    ]}
+  ]
+};
+
+/* ==========================================================
+   LÓGICA (sem acesso ao DOM)
+   ========================================================== */
+const TAM = Object.fromEntries(CONFIG.tamanhos.map(t => [t.id, t]));
+const ITEM = {};
+CONFIG.categorias.forEach(c => c.itens.forEach(i => { ITEM[i.id] = i; }));
+
+const state = { tamanho: null, itens: [] };   // itens = ids na ordem escolhida
+const CHAVE = "acaiPremium_pedido_v1";
+
+/** 1200 -> "R$ 12,00" */
+function formatBRL(c) {
+  const n = Math.max(0, Math.round(Number(c) || 0));
+  return "R$ " + String(Math.floor(n / 100)).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "," + String(n % 100).padStart(2, "0");
+}
+const limite = () => state.tamanho ? TAM[state.tamanho].maxAdicionais : 0;
+
+/** "Banco de dados" do navegador: guarda o pedido para sobreviver ao F5 */
+function salvar() {
+  try { localStorage.setItem(CHAVE, JSON.stringify(state)); } catch (e) { /* armazenamento indisponível */ }
+}
+function carregar() {
+  try {
+    const d = JSON.parse(localStorage.getItem(CHAVE) || "null");
+    if (!d || !TAM[d.tamanho]) return;
+    state.tamanho = d.tamanho;
+    (Array.isArray(d.itens) ? d.itens : []).forEach(id => {
+      if (ITEM[id] && !state.itens.includes(id) && state.itens.length < limite()) state.itens.push(id);
+    });
+  } catch (e) { state.tamanho = null; state.itens = []; }
+}
+
+function calcular() {
+  const t = state.tamanho ? TAM[state.tamanho] : null;
+  const base = t ? t.precoCentavos : 0;
+  const linhas = state.itens.map(id => ({ nome: ITEM[id].nome, centavos: ITEM[id].precoCentavos }));
+  const adic = linhas.reduce((a, l) => a + l.centavos, 0);
+  const entrega = t ? Math.max(0, CONFIG.taxaEntregaCentavos) : 0;
+  return { t, base, linhas, adic, entrega, total: Math.max(0, base + adic + entrega) };
+}
+
+function escolherTamanho(id) {
+  const t = TAM[id];
+  if (!t) return "invalido";
+  if (state.itens.length > t.maxAdicionais) return "excesso";   // não troca se já passaria do limite
+  state.tamanho = id;
+  return "ok";
+}
+function alternarAdicional(id) {
+  if (!ITEM[id]) return "invalido";
+  const i = state.itens.indexOf(id);
+  if (i >= 0) { state.itens.splice(i, 1); return "removido"; }
+  if (!state.tamanho) return "semtamanho";
+  if (state.itens.length >= limite()) return "limite";
+  state.itens.push(id);
+  return "adicionado";
+}
+function limpar() { state.tamanho = null; state.itens = []; }
+
+function textoWhatsApp(o) {
+  const L = ["*Novo pedido — " + CONFIG.nomeLoja + "*", "", "*Tamanho:* " + o.t.rotulo + " — " + formatBRL(o.base)];
+  if (o.linhas.length) {
+    L.push("", "*Adicionais:*");
+    o.linhas.forEach(l => L.push("• " + l.nome + " — " + formatBRL(l.centavos)));
+    L.push("Subtotal dos adicionais: " + formatBRL(o.adic));
+  } else L.push("", "Sem adicionais.");
+  L.push("", "Taxa de entrega: " + formatBRL(o.entrega), "*TOTAL: " + formatBRL(o.total) + "*");
+  return L.join("\n");
+}
+function numeroPendente() {
+  const n = String(CONFIG.whatsapp || "").replace(/\D/g, "");
+  return !n || n === CONFIG.whatsappExemplo;
+}
+function urlWhatsApp(texto) {
+  const n = String(CONFIG.whatsapp || "").replace(/\D/g, "");
+  return "https://wa.me/" + (numeroPendente() ? "" : n) + "?text=" + encodeURIComponent(texto);
+}
+
+/* ==========================================================
+   INTERFACE
+   ========================================================== */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+/** Copo de açaí em SVG, animado (onda do açaí, toppings balançando, copo flutuando) */
+function copoSvg(t) {
+  const k = "c" + t.id;
+  return '<svg class="copo" style="--w:' + t.largura + 'px" viewBox="0 0 120 160" aria-hidden="true">' +
+    '<defs>' +
+      '<clipPath id="cl' + k + '"><path d="M20 52h80l-9 86q-1 8-9 8H38q-8 0-9-8z"/></clipPath>' +
+      '<linearGradient id="ac' + k + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a35d0"/><stop offset="1" stop-color="#220839"/></linearGradient>' +
+      '<linearGradient id="vd' + k + '" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset=".22" stop-color="#fff" stop-opacity=".06"/><stop offset=".8" stop-color="#fff" stop-opacity=".04"/><stop offset="1" stop-color="#fff" stop-opacity=".32"/></linearGradient>' +
+    '</defs>' +
+    '<ellipse cx="60" cy="152" rx="34" ry="5" fill="#000" opacity=".45"/>' +
+    '<rect x="82" y="8" width="5" height="44" rx="2.5" fill="#3ddc84" transform="rotate(18 84 30)"/>' +
+    '<g clip-path="url(#cl' + k + ')">' +
+      '<rect x="0" y="52" width="120" height="100" fill="url(#ac' + k + ')"/>' +
+      '<g transform="translate(0,58)"><g class="onda"><path d="M-60 0q15-7 30 0t30 0 30 0 30 0 30 0 30 0 30 0 30 0V12H-60z" fill="#8a45e0"/></g></g>' +
+      '<rect x="27" y="62" width="6" height="74" rx="3" fill="#fff" opacity=".2"/>' +
+    '</g>' +
+    '<path d="M20 52h80l-9 86q-1 8-9 8H38q-8 0-9-8z" fill="url(#vd' + k + ')" stroke="#e5d4ff" stroke-opacity=".65" stroke-width="1.5"/>' +
+    '<rect x="16" y="47" width="88" height="8" rx="4" fill="#efe3ff"/>' +
+    '<rect x="37" y="88" width="46" height="30" rx="7" fill="#f6efff" opacity=".96"/>' +
+    '<text x="60" y="107" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="800" fill="#4a1d7a">' + t.ml + ' ml</text>' +
+    '<rect x="37" y="113" width="46" height="3" rx="1.5" fill="#3ddc84"/>' +
+    '<path d="M24 52q0-26 36-26t36 26z" fill="url(#ac' + k + ')"/>' +
+    '<path d="M32 46q6-14 22-16" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none" stroke-linecap="round"/>' +
+    '<g class="bob" style="--d:0s"><circle cx="45" cy="32" r="8" fill="#ffd84d" stroke="#f0b72c"/><circle cx="45" cy="32" r="3.5" fill="#fff0a8"/></g>' +
+    '<g class="bob" style="--d:.5s"><circle cx="72" cy="30" r="8" fill="#e02a4f"/><circle cx="70" cy="28" r="1" fill="#ffd0d8"/><circle cx="74" cy="31" r="1" fill="#ffd0d8"/><path d="M68 23q4-5 9 0z" fill="#3ddc84"/></g>' +
+    '<g class="bob" style="--d:1s"><circle cx="58" cy="26" r="6" fill="#8bd43c"/><circle cx="58" cy="26" r="3" fill="#e3f9a6"/></g>' +
+    '<g class="bob" style="--d:1.5s"><rect x="34" y="38" width="7" height="5" rx="2" fill="#c98a3c"/><rect x="82" y="38" width="7" height="5" rx="2" fill="#c98a3c"/></g>' +
+  '</svg>';
+}
+
+function renderTamanhos() {
+  $("tamanhos").innerHTML = CONFIG.tamanhos.map(t =>
+    '<button type="button" class="tam" data-tam="' + esc(t.id) + '" aria-pressed="false">' +
+      (t.id === CONFIG.popular ? '<span class="selo">⭐ Mais popular</span>' : '') +
+      copoSvg(t) +
+      '<span class="vol">' + t.ml + ' ml</span>' +
+      '<span class="preco">' + formatBRL(t.precoCentavos) + '</span>' +
+      '<span class="max">até ' + t.maxAdicionais + ' adicionais</span>' +
+      '<span class="est">Toque para escolher</span>' +
+    '</button>').join("");
+}
+
+function renderAdicionais() {
+  let n = 0;
+  $("adicionais").innerHTML = CONFIG.categorias.map(c =>
+    '<div class="grupo"><h3>' + esc(c.nome) + '</h3><div class="lista">' + c.itens.map(i =>
+      '<button type="button" class="add" data-add="' + esc(i.id) + '" aria-pressed="false" style="--c:' + i.cor + '" ' +
+        'aria-label="' + esc(i.nome) + ', ' + formatBRL(i.precoCentavos) + '">' +
+        '<span class="ck" aria-hidden="true">✓</span>' +
+        '<span class="foto" style="--d:' + ((n++ % 6) * -0.7).toFixed(1) + 's"><span class="foto-in">' +
+          '<img src="' + CONFIG.pastaFotos + esc(i.id) + '.jpg" data-id="' + esc(i.id) + '" data-i="0" alt="" loading="lazy" onerror="fotoErro(this)">' +
+          '<span class="emo" aria-hidden="true">' + i.emoji + '</span></span></span>' +
+        '<span class="nm">' + esc(i.nome) + '</span>' +
+        '<span class="pr">+ ' + formatBRL(i.precoCentavos) + '</span>' +
+        '<span class="st">Adicionar</span>' +
+      '</button>').join("") + '</div></div>').join("");
+}
+
+/** Tenta jpg, jpeg, png e webp; se nenhuma existir, mostra o emoji no lugar */
+function fotoErro(img) {
+  const ext = ["jpg", "jpeg", "png", "webp"];
+  const i = (+img.dataset.i || 0) + 1;
+  if (i < ext.length) { img.dataset.i = i; img.src = CONFIG.pastaFotos + img.dataset.id + "." + ext[i]; }
+  else img.parentNode.classList.add("sem");
+}
+
+function atualizar() {
+  const o = calcular(), max = limite(), n = state.itens.length, cheio = !!o.t && n >= max;
+
+  document.querySelectorAll(".tam").forEach(el => {
+    const on = el.dataset.tam === state.tamanho;
+    el.classList.toggle("sel", on);
+    el.setAttribute("aria-pressed", on);
+    el.querySelector(".est").textContent = on ? "✓ Selecionado" : "Toque para escolher";
+  });
+  document.querySelectorAll(".add").forEach(el => {
+    const sel = state.itens.includes(el.dataset.add);
+    const bloq = !sel && (!o.t || cheio);
+    el.classList.toggle("sel", sel);
+    el.classList.toggle("bloq", bloq);
+    el.setAttribute("aria-pressed", sel);
+    el.setAttribute("aria-disabled", bloq);
+    el.querySelector(".st").textContent = sel ? "✓ Adicionado (toque p/ remover)" : bloq ? (o.t ? "Limite atingido" : "Escolha o copo antes") : "Adicionar";
+  });
+
+  $("dica").textContent = !o.t
+    ? "Escolha o tamanho do copo para liberar os adicionais."
+    : "Copo de " + o.t.ml + " ml: até " + max + " adicionais (" + n + "/" + max + ")." + (cheio ? " Limite atingido — remova um para trocar." : "");
+
+  $("contador").textContent = o.t ? n + " de " + max + " adicionais" : "0 adicionais";
+  $("pontos").innerHTML = o.t ? Array.from({ length: max }, (_, i) => '<span class="' + (i < n ? 'on' : '') + '"></span>').join("") : "";
+
+  let h = o.t
+    ? '<div class="linha"><span>🥤 Açaí de ' + o.t.ml + ' ml</span><span>' + formatBRL(o.base) + '</span></div>'
+    : '<div class="vazio">Nenhum tamanho escolhido ainda.<br>Comece escolhendo o copo! 👆</div>';
+  h += '<div class="sec">Adicionais</div>';
+  h += o.linhas.length
+    ? o.linhas.map(l => '<div class="linha"><span>' + esc(l.nome) + '</span><span>' + formatBRL(l.centavos) + '</span></div>').join("") +
+      '<div class="linha sub"><span>Subtotal dos adicionais</span><span>' + formatBRL(o.adic) + '</span></div>'
+    : '<div class="vazio">Nenhum adicional escolhido. Eles são opcionais! 😋</div>';
+  h += '<div class="linha sub"><span>Taxa de entrega</span><span>' + (o.entrega ? formatBRL(o.entrega) : "Grátis") + '</span></div>';
+  h += '<div class="total"><span>TOTAL DO PEDIDO</span><strong id="totalVal">' + formatBRL(o.total) + '</strong></div>';
+  $("corpo").innerHTML = h;
+
+  $("barraTotal").textContent = formatBRL(o.total);
+  $("barraInfo").textContent = o.t ? o.t.ml + " ml" + (n ? " + " + n + (n === 1 ? " adicional" : " adicionais") : "") : "Escolha um tamanho";
+
+  const tv = $("totalVal");
+  tv.classList.add("bump");
+  setTimeout(() => tv.classList.remove("bump"), 180);
+  $("erro").classList.remove("on");
+  salvar();
+}
+
+function aviso(msg, tipo) {
+  const d = document.createElement("div");
+  d.className = "aviso " + (tipo || "");
+  d.textContent = msg;
+  $("avisos").appendChild(d);
+  setTimeout(() => d.remove(), 2600);
+}
+
+/* ---------- Janela de confirmação ---------- */
+let focoAnterior = null;
+function abrirJanela(html) {
+  focoAnterior = document.activeElement;
+  $("janela").innerHTML = html;
+  $("fundo").hidden = false;
+  document.body.style.overflow = "hidden";
+  const b = $("janela").querySelector("button, a");
+  if (b) b.focus();
+}
+function fecharJanela() {
+  $("fundo").hidden = true;
+  document.body.style.overflow = "";
+  if (focoAnterior && focoAnterior.focus) focoAnterior.focus();
+}
+function linhasPedido(o) {
+  let h = '<div class="linha"><span>🥤 ' + esc(o.t.rotulo) + '</span><span>' + formatBRL(o.base) + '</span></div>';
+  if (o.linhas.length) {
+    h += '<div class="sec">Adicionais</div>' + o.linhas.map(l => '<div class="linha"><span>' + esc(l.nome) + '</span><span>' + formatBRL(l.centavos) + '</span></div>').join("");
+    h += '<div class="linha sub"><span>Subtotal dos adicionais</span><span>' + formatBRL(o.adic) + '</span></div>';
+  } else h += '<div class="linha sub"><span>Sem adicionais</span><span>—</span></div>';
+  h += '<div class="linha sub"><span>Taxa de entrega</span><span>' + (o.entrega ? formatBRL(o.entrega) : "Grátis") + '</span></div>';
+  return h + '<div class="total"><span>TOTAL</span><strong>' + formatBRL(o.total) + '</strong></div>';
+}
+function finalizar() {
+  const o = calcular();
+  if (!o.t) {
+    const m = "Escolha o tamanho do seu açaí antes de finalizar. 😉";
+    $("erro").textContent = m; $("erro").classList.add("on"); aviso(m, "erro2");
+    $("tamanhos").scrollIntoView({ behavior: "smooth", block: "center" });
+    return;
+  }
+  abrirJanela('<h2 id="mTit">Confirme seu pedido</h2><p class="lead">Confira tudo antes de confirmar.</p>' + linhasPedido(o) +
+    '<button type="button" class="btn btn-ok" id="mConfirmar">CONFIRMAR PEDIDO</button>' +
+    '<button type="button" class="btn btn-sec" id="mVoltar">← Voltar e editar</button>');
+}
+function confirmar() {
+  const o = calcular();
+  if (!o.t) { fecharJanela(); return; }
+  abrirJanela('<div class="okmark" aria-hidden="true">✓</div><h2 id="mTit" style="text-align:center">Pedido confirmado!</h2>' +
+    '<p class="lead" style="text-align:center">Total de ' + formatBRL(o.total) + '. Para a loja receber seu pedido, envie-o pelo WhatsApp.</p>' +
+    '<a class="btn btn-ok btn-wa" href="' + urlWhatsApp(textoWhatsApp(o)) + '" target="_blank" rel="noopener">📲 Enviar pelo WhatsApp</a>' +
+    '<p style="font-size:.84rem;color:var(--muted);text-align:center;margin-top:8px">O pedido só é enviado quando você toca em enviar dentro do WhatsApp.</p>' +
+    (numeroPendente() ? '<div class="aviso-conf">⚙️ Configuração pendente: o número de WhatsApp da loja ainda não foi definido (CONFIG.whatsapp). Você poderá escolher o contato manualmente.</div>' : '') +
+    '<button type="button" class="btn btn-sec" id="mNovo">Fazer novo pedido</button>');
+}
+
+/* ---------- Eventos ---------- */
+document.addEventListener("click", e => {
+  const b = e.target.closest("button, a");
+  if (!b) return;
+  if (b.dataset.tam) {
+    const r = escolherTamanho(b.dataset.tam), t = TAM[b.dataset.tam];
+    if (r === "excesso") { aviso("O copo de " + t.ml + " ml aceita até " + t.maxAdicionais + " adicionais. Remova " + (state.itens.length - t.maxAdicionais) + " para trocar.", "erro2"); return; }
+    atualizar(); aviso("Copo de " + t.ml + " ml selecionado ✓", "ok");
+  } else if (b.dataset.add) {
+    const r = alternarAdicional(b.dataset.add);
+    if (r === "semtamanho") { aviso("Escolha o tamanho do copo primeiro.", "erro2"); $("tamanhos").scrollIntoView({ behavior: "smooth", block: "center" }); return; }
+    if (r === "limite") { aviso("Limite de " + limite() + " adicionais para o copo de " + TAM[state.tamanho].ml + " ml.", "erro2"); return; }
+    atualizar(); aviso(ITEM[b.dataset.add].nome + (r === "adicionado" ? " adicionado ✓" : " removido"), r === "adicionado" ? "ok" : "");
+  } else if (b.id === "btnFinalizar" || b.id === "barraBtn") finalizar();
+  else if (b.id === "btnLimpar") { limpar(); atualizar(); aviso("Pedido limpo. Vamos recomeçar!"); }
+  else if (b.id === "mVoltar") fecharJanela();
+  else if (b.id === "mConfirmar") confirmar();
+  else if (b.id === "mNovo") { limpar(); fecharJanela(); atualizar(); window.scrollTo({ top: 0, behavior: "smooth" }); }
+});
+$("fundo").addEventListener("click", e => { if (e.target === $("fundo")) fecharJanela(); });
+document.addEventListener("keydown", e => {
+  if ($("fundo").hidden) return;
+  if (e.key === "Escape") fecharJanela();
+  if (e.key === "Tab") {   // mantém o foco dentro da janela
+    const f = [...$("janela").querySelectorAll("button, a[href]")];
+    if (!f.length) return;
+    if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+  }
+});
+
+/* ---------- Copo 3D girando devagar (eixo vertical) ---------- */
+const copo3d = { tiras: [], rot: 0, ultimo: 0, ativo: true };
+function montarCopo3D() {
+  const N = 36, W = 14.8, LAB = 18, ALTURA = 222, RM = 68, ALFA = Math.atan(24 / 111 / 2) * 180 / Math.PI;
+  const LW = LAB * W;
+  const svg = c => "url(\"data:image/svg+xml;utf8," + encodeURIComponent(c) + "\")";
+  const grad = "<defs><linearGradient id='g' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#5a24a3'/><stop offset='1' stop-color='#22083d'/></linearGradient></defs>";
+  const base = w => "<rect width='" + w + "' height='222' fill='url(#g)'/><rect width='" + w + "' height='16' fill='#d9c2ff'/>" +
+    "<rect y='60' width='" + w + "' height='5' fill='#3ddc84'/><rect y='160' width='" + w + "' height='5' fill='#ffc83d'/>";
+  const rotulo = svg("<svg xmlns='http://www.w3.org/2000/svg' width='" + LW + "' height='222' viewBox='0 0 " + LW + " 222'>" + grad + base(LW) +
+    "<rect x='18' y='74' width='" + (LW - 36) + "' height='76' rx='12' fill='#f6efff'/>" +
+    "<text x='" + LW / 2 + "' y='110' text-anchor='middle' font-family='Arial,sans-serif' font-weight='800' font-size='30' fill='#4a1d7a'>AÇAÍ</text>" +
+    "<text x='" + LW / 2 + "' y='136' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='15' letter-spacing='5' fill='#7a3fc2'>PREMIUM</text></svg>");
+  const liso = svg("<svg xmlns='http://www.w3.org/2000/svg' width='10' height='222' viewBox='0 0 10 222' preserveAspectRatio='none'>" + grad + base(10) + "</svg>");
+  const cup = $("cup3d"), topo = cup.querySelector(".topo");
+  for (let i = 0; i < N; i++) {
+    const th = i * 360 / N, j = (i + 9) % N, d = document.createElement("div");
+    d.className = "tira";
+    d.style.transform = "rotateY(" + th + "deg) translateZ(" + RM + "px) rotateX(" + (-ALFA) + "deg)";
+    d.style.backgroundRepeat = "no-repeat";
+    if (j < LAB) { d.style.backgroundImage = rotulo; d.style.backgroundSize = LW + "px 100%"; d.style.backgroundPosition = (-j * W) + "px 0"; }
+    else { d.style.backgroundImage = liso; d.style.backgroundSize = "100% 100%"; }
+    d.innerHTML = '<i class="sh"></i><i class="sp"></i>';
+    cup.insertBefore(d, topo);
+    copo3d.tiras.push({ th, sh: d.children[0], sp: d.children[1] });
+  }
+}
+/** Luz fixa na tela: escurece as laterais e cria um brilho que "passa" enquanto o copo gira */
+function luz() {
+  for (const t of copo3d.tiras) {
+    const f = (t.th + copo3d.rot) * Math.PI / 180, c = Math.cos(f), s = Math.sin(f);
+    const dif = Math.max(0, -0.5 * s + 0.8 * c) / 0.943;
+    t.sh.style.opacity = (0.62 * (1 - dif)).toFixed(3);
+    t.sp.style.opacity = (Math.pow(Math.max(0, Math.cos(f + 0.45)), 24) * 0.5).toFixed(3);
+  }
+}
+function quadro(agora) {
+  if (!copo3d.ativo) return;
+  const dt = copo3d.ultimo ? Math.min(agora - copo3d.ultimo, 60) : 16;
+  copo3d.ultimo = agora;
+  copo3d.rot = (copo3d.rot + dt * 0.025) % 360;   // ~14 s por volta
+  $("cup3d").style.transform = "rotateY(" + copo3d.rot + "deg)";
+  luz();
+  requestAnimationFrame(quadro);
+}
+function iniciarCopo3D() {
+  montarCopo3D();
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    copo3d.rot = 20; $("cup3d").style.transform = "rotateY(20deg)"; luz();
+  } else requestAnimationFrame(quadro);
+  // Se existir um vídeo real em CONFIG.videoCopo, ele substitui o copo 3D
+  const v = $("video");
+  v.addEventListener("loadeddata", () => {
+    v.hidden = false; $("scene").hidden = true; copo3d.ativo = false;
+    v.play().catch(() => {});
+  });
+  v.src = CONFIG.videoCopo;
+}
+
+/* ---------- Início ---------- */
+(function iniciar() {
+  try {
+    $("nomeLoja").firstChild.textContent = CONFIG.nomeLoja;
+    document.title = CONFIG.nomeLoja + " — Monte seu açaí";
+    carregar();
+    renderTamanhos();
+    renderAdicionais();
+    atualizar();
+    iniciarCopo3D();
+  } catch (err) {
+    console.error(err);
+    document.querySelector("main").innerHTML = '<p style="padding:24px">Não foi possível carregar o sistema. Recarregue a página.</p>';
+  }
+})();
+</script>
+</body>
+</html>
